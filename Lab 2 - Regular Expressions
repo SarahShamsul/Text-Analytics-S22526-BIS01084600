@@ -1,0 +1,1026 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "1745c03c-37be-4a4c-9287-f66aabf232b5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#importing regular expression library\n",
+    "import re"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "99ef9e2f-6df7-4d6a-952e-4e5b5ce414d3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Digits found: ['2', '4', '5', '6', '7', '8', '9', '3', '4', '1', '2', '3', '0']\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 1)\n",
+    "text = \"Order number: 24567, Tracking ID: 8934A12, Quantity: 30\"\n",
+    "pattern = r'\\d'\n",
+    "matches = re.findall(pattern, text)\n",
+    "print(\"Digits found:\", matches)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "2c270c67-8994-47b6-b913-570676c7b99a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Non-alphanumeric characters: ['!', ' ', \"'\", ' ', ' ', ' ', '?', ' ', ' ', ' ', '@', ' ', '.']\n"
+     ]
+    }
+   ],
+   "source": [
+    "#2)\n",
+    "text = \"Welcome! How's your day going? Call me @ 3pm.\"\n",
+    "pattern = r'[^a-zA-Z0-9]'\n",
+    "matches = re.findall(pattern, text)\n",
+    "print(\"Non-alphanumeric characters:\", matches)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "83074aa8-d827-45b5-98c4-c67b8dcc75b9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Split text: ['Data Science', ' AI', ' and Machine Learning', ' These fields are growing fast', '']\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 3)\n",
+    "text = \"Data Science, AI, and Machine Learning. These fields are growing fast.\"\n",
+    "pattern = r'[,.]'\n",
+    "\n",
+    "split_text = re.split(pattern, text)\n",
+    "print(\"Split text:\", split_text)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "fa084257-fc2a-480c-bba8-251be52eb088",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Anonymized text: Contact us at [HIDDEN] or [HIDDEN]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 4)\n",
+    "text = \"Contact us at support@example.com or info@company.org\"\n",
+    "pattern = r'\\S+@\\S+'\n",
+    "\n",
+    "new_text = re.sub(pattern, \"[HIDDEN]\", text)\n",
+    "print(\"Anonymized text:\", new_text)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "f476d90c-dd32-4c24-b256-30d37d26603e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Domain types: ['com', 'edu', 'org']\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 5)\n",
+    "text = \"Emails: user@gmail.com, admin@university.edu, info@company.org\"\n",
+    "pattern = r'@\\w+\\.(\\w+)'\n",
+    "\n",
+    "matches = re.findall(pattern, text)\n",
+    "print(\"Domain types:\", matches)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f84e7042-3418-4e9d-8951-51d85abc6405",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "anaconda-2025.12-py312",
+   "language": "python",
+   "name": "conda-env-anaconda-2025.12-py312-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
+
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "b24fcee7-d073-4164-ad93-ac97a8b74952",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#importing regular expression library\n",
+    "import re "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "bc6186c3-1b96-4309-9ca9-5a8bffc930d3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<re.Match object; span=(0, 1), match='I'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "#using re.match\n",
+    "#to find the first occurrence of the letter 'I' in the string\n",
+    "sentence1 = re.match (r'I', 'I am learning text analytics')\n",
+    "print (sentence1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "7a8f2e35-efee-4ce4-9987-e1ab1cf045dc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "None\n"
+     ]
+    }
+   ],
+   "source": [
+    "#using re.match\n",
+    "#to find the first occurrence of the letter 'v' in the string\n",
+    "sentence2 = re.match (r'v', 'I am learning text analytics')\n",
+    "print (sentence2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "ace0798a-cf5a-48c6-998d-6b40bc661b6f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "None\n"
+     ]
+    }
+   ],
+   "source": [
+    "#using re.match\n",
+    "#to find the first occurrence of the letter 'am' in the string\n",
+    "sentence3 = re.match (r'am', 'I am learning text analytics')\n",
+    "print (sentence3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "f8c4ba10-63ae-427b-84ee-e3bef8fd6882",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#re.search()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "4ffd37a9-717b-4e33-b455-ef946bf1c398",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<re.Match object; span=(2, 4), match='am'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence4 = re.search(r'am', 'I am learning text analytics')\n",
+    "print (sentence4) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1a002ce4-4f08-4df2-8ad0-85ebb189e5a3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<re.Match object; span=(2, 4), match='am'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence5 = re.search(r'am', 'I am learning text analytics and am enjoying it')\n",
+    "print (sentence5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "4fb10bc9-d749-499a-bba8-fe0c3e362bc6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#re.findall()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "98e81132-6415-41df-a1e1-656724a4f48e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['am', 'am']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence6 = re.findall(r'am', 'I am learning text analytics and am enjoying it')\n",
+    "print (sentence6)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "75fd51eb-e281-4a41-a955-1fe1f7ef0861",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#re.split()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "28d065d8-b401-4fa9-a2d2-1f2ffb0aafdf",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I am learning text analytics ', ' am enjoying it']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence7 = re.split(r'and', 'I am learning text analytics and am enjoying it')\n",
+    "print (sentence7)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "e884de5c-b442-42f6-98a2-d4d170a18a26",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I ', ' learning text analytics and ', ' enjoying it']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence8 = re.split(r'am', 'I am learning text analytics and am enjoying it')\n",
+    "print (sentence8)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "2d8f3899-0d8d-41fc-bc4a-6079ba49e345",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I ', ' learning text analytics, I ', ' enjoying it and I ', ' going to ace it']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence10 = re.split(r'am', 'I am learning text analytics, I am enjoying it and I am going to ace it', maxsplit=3)\n",
+    "print (sentence10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "cf976f40-89af-4f96-8ef2-416e6a8e09fc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#re.sub()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "ab47c709-4734-4d45-b92f-3e7d473f0658",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "we like text analytics and we enjoy learning it\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence11 = re.sub(r'I', 'we', 'I like text analytics and I enjoy learning it')\n",
+    "print (sentence11)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "64c680bf-2efc-4e97-bd9b-269b0f80470e",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "anaconda-panel-2023.05-py310",
+   "language": "python",
+   "name": "conda-env-anaconda-panel-2023.05-py310-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
+
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "dba00066-4d32-4b46-a721-cb79de18a512",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#importing regular expression library\n",
+    "import re"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "ea1bf1ce-2dd7-4a18-951c-f6a8b0dbe264",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a)Metacharacter."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "c56599b3-72c0-4973-94d7-af15eb588bf4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I', ' ', 'a', 'm', ' ', 'l', 'e', 'a', 'r', 'n', 'i', 'n', 'g', ' ', 't', 'e', 'x', 't', ' ', 'a', 'n', 'a', 'l', 'y', 't', 'i', 'c', 's']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence1 = re.findall (r'.', 'I am learning text analytics')\n",
+    "print (sentence1)\n",
+    "# Each letter is selected including spaces"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "5110cade-5f46-43d1-8291-ed54d8ee7dc4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# b)Metacharacter\\w"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "c37c8bf9-0b1a-4252-9f17-0f14bb212c49",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I', 'a', 'm', 'l', 'e', 'a', 'r', 'n', 'i', 'n', 'g', 't', 'e', 'x', 't', 'a', 'n', 'a', 'l', 'y', 't', 'i', 'c', 's']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence2 = re.findall(r'\\w', 'I am learning text analytics')\n",
+    "print(sentence2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "53d26318-057d-42ba-a87f-91fc150d716f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# c)Metacharacter \\w*"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "badcfcc5-c888-4888-ac07-bb3f56d86187",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I', '', 'am', '', 'learning', '', 'text', '', 'analytics', '']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence3 = re.findall (r'\\w*', 'I am learning text analytics')\n",
+    "print (sentence3)\n",
+    "# Each word is selected including spaces"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "7e998248-ad3f-454b-8595-ab6cbc915219",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# d)Metacharacter \\w+"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "6b89bfdb-21dc-40bb-91b3-0ecb9f84e07a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I', 'am', 'learning', 'text', 'analytics']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence4 = re.findall (r'\\w+', 'I am learning text analytics')\n",
+    "print (sentence4)\n",
+    "# Each word is selected excluding spaces"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "e69b77b6-5419-4aaf-97bf-344d88870ca2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# e)Metacharacter ^\\w+"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "bc39e012-2da3-4169-9fba-997d7ca43833",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence5 = re.findall (r'^\\w+', 'I am learning text analytics')\n",
+    "print (sentence5)\n",
+    "# First word is selected "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "b6702e89-99ec-4733-875f-3c96e11c7c05",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# f)Metacharacter \\w+$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "7079654f-fb4e-47b1-9043-6f2528d7ea5e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['analytics']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence6 = re.findall (r'\\w+$', 'I am learning text analytics')\n",
+    "print (sentence6)\n",
+    "# Last word is selected"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "647e2061-1313-40a4-b294-e5f8e50a7adf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# g)Metacharacter \\w\\w"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "84a4a933-8f92-4f8d-87f1-7f5e61f36f7d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['am', 'le', 'ar', 'ni', 'ng', 'te', 'xt', 'an', 'al', 'yt', 'ic']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence7 = re.findall (r'\\w\\w', 'I am learning text analytics')\n",
+    "print (sentence7)\n",
+    "# 2 consecutive characters are selected"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "668b88fa-7f93-4c75-97ef-0f5f4c6241c7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# h)Metacharacter \\b\\w\\w"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "5d63bb10-1a7b-45a0-8715-f6777c98c8c0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['am', 'le', 'te', 'an']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence8 = re.findall (r'\\b\\w\\w', 'I am learning text analytics')\n",
+    "print (sentence8)\n",
+    "# 2 consecutive characters in a string are selected"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "555f8668-6a0f-4ecf-96a5-d16c9225ebe7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Extracting the domain type of email address"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "5d17afc1-5f90-4b3d-a481-bd87d6c6774d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['@text', '@analytics', '@textanalytics']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence9 = re.findall (r'@\\w+', 'user@text.com.my, user@analytics.gov.my, user@textanalytics.edu.my')\n",
+    "print (sentence9)\n",
+    "# Only the first word in the domain name is selected"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "447a86b2-b9a6-4f2b-acea-23db8b06498e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['@text.com', '@analytics.gov', '@textanalytics.edu']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence10 = re.findall (r'@\\w+.\\w+','user@text.com.my, user@analytics.gov.my, user@textanalytics.edu.my')\n",
+    "print (sentence10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "86a306fd-aee6-4fbb-8683-f681fec5b8b8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['@text.com.my', '@analytics.gov.my', '@textanalytics.edu.my']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence11 = re.findall (r'@\\w+.\\w+.\\w+', 'user@text.com.my, user@analytics.gov.my, user@textanalytics.edu.my')\n",
+    "print (sentence11)\n",
+    "# The full domain name is selected"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "642f1b57-9c21-473d-aa58-ca1b120d5ed8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['com.my', 'gov.my', 'edu.my']\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Solution\n",
+    "sentence12 = re.findall (r'@\\w+.(\\w+.\\w+)', 'user@text.com.my, user@analytics.gov.my, user@textanalytics.edu.my')\n",
+    "print (sentence12)\n",
+    "# To display the type of domain"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "2d3b69f1-b6c1-499c-84f3-0551b1d5d07c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Extracting date"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "5c8422a2-a91d-4b1b-bbdf-6d9100bfc6e5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['15-05-2001', '20-08-2000']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence13 = re.findall (r'\\d{2}-\\d{2}-\\d{4}', 'Ahmad BIT(IS) 15-05-2001, Johnny BCS(SE) 20-08-2000')\n",
+    "print (sentence13)\n",
+    "# To display the date in the format of dd-mm-yyyy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "80c2656e-011c-48df-b695-9d4a90ffb2ff",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['2001', '2000']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence14 = re.findall (r'\\d{2}-\\d{2}-(\\d{4})', 'Ahmad BIT(IS) 15-05-2001, Johnny BCS(SE) 20-08-2000')\n",
+    "print (sentence14)\n",
+    "# Only the year will be displayed"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "id": "d54d0085-1f87-4135-8ab8-31e9cc7c26d2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['15-05-01', '20-08-00']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence15 = re.findall(\n",
+    " r'(\\d{2}-\\d{2}-)\\d{2}(\\d{2})', 'Ahmad BIT(IS) 15-05-2001, Johnny BCS(SE) 20-08-2000')\n",
+    "dates = [d + y for d, y in sentence15]\n",
+    "print(dates)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "56979bee-c140-4275-8b6b-f3bd0a40c711",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Selecting words that start with vowels in a string"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "c7ec9dc0-bc09-43cf-89f5-dd9f28c4ebc5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['ave', 'eight', 'ory', 'ooks', 'often', 'ead', 'em', 'in', 'afternoon']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence16 = re.findall (r'[aeiouAEIOU]\\w+', 'I have eight story books. I often read them in afternoon')\n",
+    "print (sentence16)\n",
+    "# A sequence that starts with a vowel followed by one or more characters are selected"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "d03cff17-ba06-40eb-a092-3980682ebf28",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['eight', 'often', 'in', 'afternoon']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence17 = re.findall (r'\\b[aeiouAEIOU]\\w+', 'I have eight story books. I often read them in afternoon')\n",
+    "print (sentence17)\n",
+    "\n",
+    "# Only words that start with vowels are selected"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "6bb7354e-5e97-447f-bc85-e443e63d7d4e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['have', 'story', 'books', 'read', 'them']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence18 = re.findall (r'\\b[^aeiouAEIOU\\s]\\w+', 'I have eight story books. I often read them in afternoon')\n",
+    "print (sentence18)\n",
+    "# Only words that start with non-vowels are selected"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "2081495c-3981-46bc-825d-6220a8c88ca2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Splitting a string with multiple delimiters"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "a9e766d0-8c8d-4ac2-bb2c-092f5c7c7d49",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I have many story books', ' colouring books', ' I often read them in the afternoon.']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence19 = re.split (r'[;,]', 'I have many story books, colouring books; I often read them in the afternoon.')\n",
+    "print (sentence19)\n",
+    "# split the words based on the delimiters semi colon and comma"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "ea3f943b-59aa-4b1a-9022-049b93bd6812",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['I', 'have', 'many', 'story', 'books', '', 'colouring', 'books', '', 'I', 'often', 'read', 'them', 'in', 'the', 'afternoon.']\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence20 = re.split (r'[;,\\s]', 'I have many story books, colouring books; I often read them in the afternoon.')\n",
+    "print (sentence20)\n",
+    "# split the words based on the delimiters semi colon, comma and space"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "id": "cf9600c5-35cd-4c3d-ac5e-d95d868be423",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Substituting delimiters"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "5e912f97-92de-42c4-85ff-1f9591027977",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "I have many story books. colouring books. I often read them in the afternoon.\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence21 = re.sub (r'[;,]', '.', 'I have many story books, colouring books; I often read them in the afternoon.')\n",
+    "print (sentence21)\n",
+    "# Substitute the delimiters semi colon and comma with fullstop"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "anaconda-panel-2023.05-py310",
+   "language": "python",
+   "name": "conda-env-anaconda-panel-2023.05-py310-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
