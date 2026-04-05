@@ -1,0 +1,48 @@
+
+DISCUSSION: STRENGTHS AND WEAKNESSES OF SELECTED MODELS FOR SENTIMENT CLASSIFICATION
+
+1. LEXICON-BASED APPROACHES (TextBlob & VADER)
+
+STRENGTHS:
+- No training data required
+- High processing efficiency
+- Works well for general sentiment without domain adaptation
+- VADER is specifically tuned for social media large datasets
+- Easy to understand why a document is positive or negative based on word scores
+
+WEAKNESSES:
+- Cannot capture context-dependent sentiment (e.g., "This is sick!" - could be positive or negative)
+- Struggles with sarcasm and irony
+- Difficulty with neutral sentiment
+- Limited vocabulary
+- Lower accuracy compared to ML approaches
+
+2. MACHINE LEARNING APPROACHES (Naive Bayes & SVM)
+
+Naive Bayes Strengths:
+- Fast training and prediction
+- High positive sentiment detection
+- Easy to implement
+- Ideal for real-time applications and large-scale datasets
+
+Naive Bayes Weaknesses:
+- Poor negative sentiment recall
+- Assumes feature dependence
+- Severely biased towards majority class
+- Cannot capture word dependencies
+
+SVM Strengths:
+- Higher overall accuracy
+- Better class balance
+- Handles high dimensional data
+- Can capture complex word relationships
+- Better negative sentiment detection
+
+SVM Weaknesses:
+- Requires longer processing data time, especially on large datasets
+- Requires careful parameter tuning
+- Less interpreable than Naive Bayes
+
+CONCLUSION:
+For this Amazon reviews dataset, machine learning approaches (particularly SVM with TF-IDF) 
+demonstrate superior performance compared to lexicon-based methods. 
